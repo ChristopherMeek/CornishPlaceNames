@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="styles.css" rel="stylesheet">
+
+
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container">
+
+	    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+
+	    <!-- Be sure to leave the brand out there if you want it shown -->
+	    <a class="navbar-brand" href="#">Cornish Place Names</a>
+
+	    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
+	    <div class="nav-collapse collapse navbar-responsive-collapse">
+	      <ul class="nav navbar-nav">
+	      	<li class="active"><a href="#">Home</a></li>
+	      </ul>
+	    </div><!-- /.nav-collapse -->
+	  </div><!-- /.container -->
+	</div><!-- /.navbar -->
+
+	<div class="container">
+		<form class="form-inline" role="form">
+  			<div class="form-group">
+    			<label class="sr-only" for="keyword">Keyword:</label>
+    			<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword, valueUpdate: 'keyup'">
+  			</div>
+  			
+  			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
+
+		<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Parish</th>
+				<th>Grid Ref</th>
+				<th>Cornish Form</th>
+				<th>Progress</th>
+				<th>Notes</th>
+			</tr>
+			
+			<!-- ko foreach: filteredPlaces -->
+			<tr>
+				<td data-bind="text: name"></td>
+				<td data-bind="text: parish"></td>
+				<td data-bind="text: gridRef"></td>
+				<td data-bind="text: cornishForm"></td>
+				<td data-bind="text: progress"></td>
+				<td data-bind="text: notes"></td>
+			</tr>
+			<!-- /ko -->
+		</table>
+	</div>
+
+	<footer class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="container">
+			&copy; Sense Making Ltd. 2013
+		</div>
+	</footer>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
+
+	<script src="placeNames.js"></script>
+
+	<script>
+		function Application() {
+			var self = this;
+			this.places = ko.observableArray();
+			this.keyword = ko.observable();
+			this.filteredPlaces = ko.computed(function() {
+				var keyword = self.keyword() ? self.keyword().toLowerCase() : '';
+				return ko.utils.arrayFilter(self.places(), function(place) { return place.name().toLowerCase().indexOf(keyword) > -1; });
+			}, this);
+
+			for(var i = 0; i < placeNames.length; i++) {
+				this.places.push(new Place(placeNames[i]));
+			}
+		};
+
+		function Place(place) {
+			this.name = ko.observable(place.name || '');
+			this.parish = ko.observable(place.parish || '');
+			this.gridRef = ko.observable(place.gridRef || '');
+			this.cornishForm = ko.observable(place.cornishForm || '');
+			this.progress = ko.observable(place.progress || '');
+			this.notes = ko.observable(place.notes || '');
+		};
+
+		var app = new Application();
+		ko.applyBindings(app);
+	</script>
+</body>
+</html>
