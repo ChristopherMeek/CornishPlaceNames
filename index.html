@@ -22,44 +22,16 @@
 	    <a class="navbar-brand" href="#">Cornish Place Names</a>
 
 	    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
-	    <div class="nav-collapse collapse navbar-responsive-collapse">
-	      <ul class="nav navbar-nav">
-	      	<li class="active"><a href="#">Home</a></li>
-	      </ul>
-	    </div><!-- /.nav-collapse -->
-	  </div><!-- /.container -->
+	    <div class="collapse navbar-collapse navbar-ex1-collapse">
+    		<ul class="nav navbar-nav">
+      			<li data-bind="css: { active: currentViewModel().template() == 'home' }"><a href="home" data-bind="click: link">Home</a></li>
+      			<li data-bind="css: { active: currentViewModel().template() == 'places' }"><a href="places"  data-bind="click: link">Places</a></li>      			
+      		</ul>
+      	</div>
+      </div>
 	</div><!-- /.navbar -->
 
-	<div class="container">
-		<div class="form-inline" role="form">
-  			<div class="form-group">
-    			<label class="sr-only" for="keyword">Keyword:</label>
-    			<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword, valueUpdate: 'keyup'">
-  			</div>
-		</div>
-
-		<table class="table">
-			<tr>
-				<th>Name</th>
-				<th>Parish</th>
-				<th>Grid Ref</th>
-				<th>Cornish Form</th>
-				<th>Progress</th>
-				<th>Notes</th>
-			</tr>
-			
-			<!-- ko foreach: filteredPlaces -->
-			<tr>
-				<td data-bind="text: name"></td>
-				<td data-bind="text: parish"></td>
-				<td data-bind="text: gridRef"></td>
-				<td data-bind="text: cornishForm"></td>
-				<td data-bind="text: progress"></td>
-				<td data-bind="text: notes"></td>
-			</tr>
-			<!-- /ko -->
-		</table>
-	</div>
+	<!-- ko template: { name: currentViewModel().template, data: currentViewModel } --><!-- /ko -->
 
 	<footer class="navbar navbar-inverse navbar-fixed-bottom">
 		<div class="container">
@@ -67,37 +39,60 @@
 		</div>
 	</footer>
 
+	<script type="text/html" id="home">
+		<div class="container">
+		<h1>Welcome</h1>
+		<p>Cornish place names are important since it is the first context where most Cornish people first encounter their own language. They have a special place for Cornish people, enhancing their sense of place and distinctive culture.</p>
+
+		<p>The Cornish Language Partnership (CLP) represents all stakeholders with an interest in the Cornish Language. It is funded by the UK Government and Cornwall Council.</p>
+
+		<p>The Place Name and Street Sign Panel, of the CLP, provide recommended Cornish forms of place and street names. This helps maintain quality whilst preventing confusion and duplication. Members of the Panel are Cornish speakers and comprise most of the acknowledged experts on Cornish place names.</p> 
+
+		<p>The gazetter included in these webpages represents the extent of the Panel to date.</p>
+		<div>
+	</script>
+
+	<script type="text/html" id="places">
+		<div class="container">
+			<div class="form-inline" role="form">
+	  			<div class="form-group">	  				
+	    			<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword">
+	  			</div>
+	  			<button type="button" class="btn btn-primary" data-bind="click: doSearch">Search</button>
+			</div>
+
+			<table class="table">
+				<tr>
+					<th>Name</th>
+					<th>Parish</th>
+					<th>Grid Ref</th>
+					<th>Cornish Form</th>
+					<th>Progress</th>
+					<th>Notes</th>
+				</tr>
+				
+				<!-- ko foreach: places -->
+				<tr>
+					<td data-bind="text: Name"></td>
+					<td data-bind="text: Parish"></td>
+					<td data-bind="text: GridRef"></td>
+					<td data-bind="text: CornishForm"></td>
+					<td data-bind="text: Progress"></td>
+					<td data-bind="text: Notes"></td>
+				</tr>
+				<!-- /ko -->
+			</table>
+		</div>
+	</script>
+
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js"></script>
+	<script src="app.js"></script>
 
-	<script src="placeNames.js"></script>
-
-	<script>
-		function Application() {
-			var self = this;
-			this.places = ko.observableArray();
-			this.keyword = ko.observable();
-			this.filteredPlaces = ko.computed(function() {
-				var keyword = self.keyword() ? self.keyword().toLowerCase() : '';
-				return ko.utils.arrayFilter(self.places(), function(place) { return place.name().toLowerCase().indexOf(keyword) > -1; });
-			}, this);
-
-			for(var i = 0; i < placeNames.length; i++) {
-				this.places.push(new Place(placeNames[i]));
-			}
-		};
-
-		function Place(place) {
-			this.name = ko.observable(place.name || '');
-			this.parish = ko.observable(place.parish || '');
-			this.gridRef = ko.observable(place.gridRef || '');
-			this.cornishForm = ko.observable(place.cornishForm || '');
-			this.progress = ko.observable(place.progress || '');
-			this.notes = ko.observable(place.notes || '');
-		};
-
+	<script>		
 		var app = new Application();
 		ko.applyBindings(app);
 	</script>
