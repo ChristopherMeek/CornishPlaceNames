@@ -1,0 +1,12 @@
+C:\Projects\CornishPlaceNames\Server\Server\bin\Server.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\Server.pdb
+C:\Projects\CornishPlaceNames\Server\Server\bin\Nancy.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\Nancy.Hosting.Aspnet.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\Nancy.ViewEngines.Razor.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\System.Web.Razor.Unofficial.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\System.Web.Razor.Unofficial.pdb
+C:\Projects\CornishPlaceNames\Server\Server\obj\Debug\Server.dll
+C:\Projects\CornishPlaceNames\Server\Server\obj\Debug\Server.pdb
+C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.Ado.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.SqlServer.dll
