@@ -4,7 +4,7 @@ function Application() {
 	this.currentViewModel = ko.observable(this.getViewModel('home',HomeViewModel));
 
 	Sammy(function() {
-		this.get('#', function() {
+		this.get('#home', function() {
 			console.log('Route: Home');
 			self.currentViewModel(self.getViewModel('home', HomeViewModel));
 		});
@@ -12,6 +12,10 @@ function Application() {
 		this.get('#places', function() {
 			console.log('Route: Places');
 			self.currentViewModel(self.getViewModel('places', PlacesViewModel));
+		});
+
+		this.get('', function() {
+			this.app.runRoute("get", "#home");	
 		});
 	}).run();
 };
@@ -40,10 +44,14 @@ function PlacesViewModel() {
 	this.keyword = ko.observable();
 };
 
-PlacesViewModel.prototype.doSearch = function() {
+PlacesViewModel.prototype.doSearch = function(model) {
 	console.log('Searching ...');
 	$.getJSON('http://cpn.apphb.com/places?keyword=' + this.keyword(), function(data) {
-		console.log(data);
+		model.places.removeAll();
+
+		for(var i = 0; i < data.length; i ++) {
+			model.places.push(data[i]);
+		}
 	});
 };
 

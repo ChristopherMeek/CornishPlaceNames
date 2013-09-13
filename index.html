@@ -24,7 +24,7 @@
 	    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
 	    <div class="collapse navbar-collapse navbar-ex1-collapse">
     		<ul class="nav navbar-nav">
-      			<li data-bind="css: { active: currentViewModel().template() == 'home' }"><a href="" data-bind="click: link">Home</a></li>
+      			<li data-bind="css: { active: currentViewModel().template() == 'home' }"><a href="home" data-bind="click: link">Home</a></li>
       			<li data-bind="css: { active: currentViewModel().template() == 'places' }"><a href="places"  data-bind="click: link">Places</a></li>      			
       		</ul>
       	</div>
@@ -73,12 +73,12 @@
 				
 				<!-- ko foreach: places -->
 				<tr>
-					<td data-bind="text: name"></td>
-					<td data-bind="text: parish"></td>
-					<td data-bind="text: gridRef"></td>
-					<td data-bind="text: cornishForm"></td>
-					<td data-bind="text: progress"></td>
-					<td data-bind="text: notes"></td>
+					<td data-bind="text: Name"></td>
+					<td data-bind="text: Parish"></td>
+					<td data-bind="text: GridRef"></td>
+					<td data-bind="text: CornishForm"></td>
+					<td data-bind="text: Progress"></td>
+					<td data-bind="text: Notes"></td>
 				</tr>
 				<!-- /ko -->
 			</table>
@@ -88,7 +88,6 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.3.5/knockout.mapping.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js"></script>
 	<script src="app.js"></script>
