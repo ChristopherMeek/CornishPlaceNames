@@ -20,8 +20,10 @@ namespace Server
         {
             if (!Request.Query.keyword.HasValue) return 500;
 
+            var keyword = "%" + Request.Query.keyword + "%";
+
             var db = Database.Open();
-            IEnumerable<Place> places = db.Places.FindAll(db.Places.Name.Like("%" + Request.Query.keyword + "%"));
+            IEnumerable<Place> places = db.Places.FindAll(db.Places.Name.Like(keyword) || db.Places.CornishForm.Like(keyword));
             return Response.AsJson(places);
         }
     }

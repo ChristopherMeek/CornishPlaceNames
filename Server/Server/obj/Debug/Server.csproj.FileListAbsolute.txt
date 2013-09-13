@@ -10,3 +10,4 @@ C:\Projects\CornishPlaceNames\Server\Server\obj\Debug\Server.pdb
 C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.Ado.dll
 C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.dll
 C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.SqlServer.dll
+C:\Projects\CornishPlaceNames\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache

@@ -64,12 +64,3 @@ PlacesViewModel.prototype.doSearch = function() {
 		}
 	});
 };
-
-function Place(place) {
-	this.name = ko.observable(place.name || '');
-	this.parish = ko.observable(place.parish || '');
-	this.gridRef = ko.observable(place.gridRef || '');
-	this.cornishForm = ko.observable(place.cornishForm || '');
-	this.progress = ko.observable(place.progress || '');
-	this.notes = ko.observable(place.notes || '');
-};
