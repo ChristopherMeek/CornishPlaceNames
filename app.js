@@ -49,7 +49,7 @@ PlacesViewModel.prototype.doSearch = function() {
 	console.log('Searching ...');
 	var self = this;
 
-	if(this.keyword().length < 3) {
+	if(!this.keyword() || this.keyword().length < 3) {
 		this.showError(true);
 		return;
 	}
