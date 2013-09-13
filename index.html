@@ -61,6 +61,10 @@
 	  			<button type="button" class="btn btn-primary" data-bind="click: doSearch">Search</button>
 			</div>
 
+			<div class="alert alert-danger" data-bind="visible: showError">
+				You must have at least 3 letters to search
+			</div>
+
 			<table class="table">
 				<tr>
 					<th>Name</th>
