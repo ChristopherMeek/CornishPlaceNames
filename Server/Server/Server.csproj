@@ -78,6 +78,7 @@
     <Compile Include="Domain\Place.cs" />
     <Compile Include="PlaceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

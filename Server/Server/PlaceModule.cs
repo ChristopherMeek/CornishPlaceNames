@@ -18,13 +18,27 @@ namespace Server
 
         private object ListPlaces(dynamic parameters)
         {
-            if (!Request.Query.keyword.HasValue) return 500;
+            if (Request.Query.keyword.HasValue)
+                return Response.AsJson(FindByEnglishName((string)Request.Query.keyword));
 
-            var keyword = "%" + Request.Query.keyword + "%";
+            if (Request.Query.cornishKeyword.HasValue)
+                return Response.AsJson(FindByCornishName((string) Request.Query.cornishKeyword));
 
+            return 500;
+        }
+
+        private static IEnumerable<Place> FindByEnglishName(string name)
+        {
             var db = Database.Open();
-            IEnumerable<Place> places = db.Places.FindAll(db.Places.Name.Like(keyword) || db.Places.CornishForm.Like(keyword));
-            return Response.AsJson(places);
+            IEnumerable<Place> places = db.Places.FindAll(db.Places.Name.Like(name.WithWildcards())).OrderByName();
+            return places;
+        }
+
+        private static IEnumerable<Place> FindByCornishName(string name)
+        {
+            var db = Database.Open();
+            IEnumerable<Place> places = db.Places.FindAll(db.Places.CornishForm.Like(name.WithWildcards())).OrderByCornishForm();
+            return places;
         }
     }
 }
