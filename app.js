@@ -43,17 +43,18 @@ function PlacesViewModel() {
 	this.places = ko.observableArray();
 	this.keyword = ko.observable();
 	this.showError = ko.observable(false);
+	this.loading = ko.observable(false);
 };
 
 PlacesViewModel.prototype.doSearch = function() {
 	console.log('Searching ...');
 	var self = this;
-
 	if(!this.keyword() || this.keyword().length < 3) {
 		this.showError(true);
 		return;
 	}
 
+	this.loading(true);
 	this.showError(false);
 
 	$.getJSON('http://cpn.apphb.com/places?keyword=' + this.keyword(), function(data) {
@@ -62,5 +63,7 @@ PlacesViewModel.prototype.doSearch = function() {
 		for(var i = 0; i < data.length; i ++) {
 			self.places.push(data[i]);
 		}
+
+		self.loading(false);
 	});
 };

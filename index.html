@@ -7,8 +7,9 @@
 
 
 </head>
-<body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+<body>	
+
+	<div class="navbar navbar-default navbar-fixed-top">
 	  <div class="container">
 
 	    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
@@ -31,9 +32,9 @@
       </div>
 	</div><!-- /.navbar -->
 
-	<!-- ko template: { name: currentViewModel().template, data: currentViewModel } --><!-- /ko -->
+	<div data-bind="template: { name: currentViewModel().template, data: currentViewModel }" id="main"></div>
 
-	<footer class="navbar navbar-inverse navbar-fixed-bottom">
+	<footer>
 		<div class="container">
 			<h5>Contact</h5>
 			<address>
@@ -54,9 +55,9 @@
 
 		<p>The Cornish Language Partnership (CLP) represents all stakeholders with an interest in the Cornish Language. It is funded by the UK Government and Cornwall Council.</p>
 
-		<p>The Place Name and Street Sign Panel, of the CLP, provide recommended Cornish forms of place and street names. This helps maintain quality whilst preventing confusion and duplication. Members of the Panel are Cornish speakers and comprise most of the acknowledged experts on Cornish place names.</p> 
+		<p>The Place Name and Street Sign Panel, of the CLP, provide recommended Cornish forms of place and street names. This helps maintain consistency whilst preventing confusion and duplication. Members of the Panel are Cornish speakers and comprise most of the acknowledged experts on Cornish place names.</p> 
 
-		<p>The gazetter included in these webpages represents the extent of the Panel to date.</p>
+		<p>The gazetter included in these webpages represents the extent of the Panel&quot;s work to date.</p>
 		<div>
 	</script>
 
@@ -66,7 +67,7 @@
 	  			<div class="form-group">	  				
 	    			<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword">
 	  			</div>
-	  			<button type="button" class="btn btn-primary" data-bind="click: doSearch">Search</button>
+	  			<button type="button" class="btn btn-primary" data-bind="click: doSearch">Search<span data-bind="visible: loading">&nbsp;<i class="icon icon-spin icon-refresh"></i></span></button>
 			</div>
 
 			<div class="alert alert-danger" data-bind="visible: showError">

@@ -1,23 +1,18 @@
-// Cyborg 3.0.0
+// Cosmo 3.0.0
 // Bootswatch
 // -----------------------------------------------------
 
-@import url("http://fonts.googleapis.com/css?family=Droid+Sans:400,700");
+@import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700");
 
 // Navbar =====================================================================
 
-.navbar {
-
-	border-bottom: 1px solid @gray-dark;
-}
-
 // Buttons ====================================================================
 
-// Typography =================================================================
-
-h1, h2, h3, h4, h5, h6 {
-	color: #fff;
+.btn {
+	border: none;
 }
+
+// Typography =================================================================
 
 .text-primary {
 	color: @brand-primary;
@@ -52,6 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 
 // Forms ======================================================================
 
+
 .has-warning {
 	.help-block,
 	.control-label {
@@ -60,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	.form-control,
 	.form-control:focus {
-		border-color: @brand-warning;
+		border: 1px solid @brand-warning;
 	}
 }
 
@@ -72,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	.form-control,
 	.form-control:focus {
-		border-color: @brand-danger;
+		border: 1px solid @brand-danger;
 	}
 }
 
@@ -84,58 +80,59 @@ h1, h2, h3, h4, h5, h6 {
 
 	.form-control,
 	.form-control:focus {
-		border-color: @brand-success;
+		border: 1px solid @brand-success;
 	}
-}
-
-legend {
-	color: #fff;
-}
-
-.input-group-addon {
-	background-color: @btn-default-bg;
 }
 
 // Navs =======================================================================
 
-.nav {
+.nav-pills {
 
-	.caret,
-	a:hover .caret {
-		border-top-color: #fff;
-		border-bottom-color: #fff;
+	& > li > a {
+		border-radius: 0;
 	}
 }
 
-.nav-tabs,
-.nav-pills,
-.breadcrumb,
-.pagination,
-.pager {
+.dropdown-menu {
 
-	a {
-		color: #fff;
+	& > li > a:hover,
+	& > li > a:focus {
+		background-image: none;
+	}
+}
+
+.pagination {
+
+	.active > a,
+	.active > a:hover {
+		border-color: #ddd;
 	}
 }
 
 // Indicators =================================================================
 
 .alert {
+	border: none;
 
-	.alert-link,
-	a {
-		color: @alert-warning-text;
+	.alert-link {
 		text-decoration: underline;
+		color: #fff;
 	}
+}
+
+.label {
+	border-radius: 0;
+}
+
+.close {
+	opacity: 1;
 }
 
 // Progress bars ==============================================================
 
-// Containers =================================================================
-
-.jumbotron {
-
-	h1, h2, h3, h4, h5, h6 {
-		color: #fff;
-	}
+.progress {
+	height: 8px;
+	.box-shadow(none);
 }
+
+// Containers =================================================================
