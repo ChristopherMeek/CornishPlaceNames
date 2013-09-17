@@ -43,17 +43,18 @@ function PlacesViewModel() {
 	this.places = ko.observableArray();
 	this.keyword = ko.observable();
 	this.showError = ko.observable(false);
+	this.loading = ko.observable(false);
 };
 
 PlacesViewModel.prototype.doSearch = function() {
 	console.log('Searching ...');
 	var self = this;
-
 	if(!this.keyword() || this.keyword().length < 3) {
 		this.showError(true);
 		return;
 	}
 
+	this.loading(true);
 	this.showError(false);
 
 	$.getJSON('http://cpn.apphb.com/places?keyword=' + this.keyword(), function(data) {
@@ -62,14 +63,7 @@ PlacesViewModel.prototype.doSearch = function() {
 		for(var i = 0; i < data.length; i ++) {
 			self.places.push(data[i]);
 		}
-	});
-};
 
-function Place(place) {
-	this.name = ko.observable(place.name || '');
-	this.parish = ko.observable(place.parish || '');
-	this.gridRef = ko.observable(place.gridRef || '');
-	this.cornishForm = ko.observable(place.cornishForm || '');
-	this.progress = ko.observable(place.progress || '');
-	this.notes = ko.observable(place.notes || '');
+		self.loading(false);
+	});
 };
