@@ -67,6 +67,18 @@
 	  			<div class="form-group">	  				
 	    			<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword">
 	  			</div>
+	  			<div class="form-group">
+	  				<label>
+	  					<input type="radio" name="searchType" data-bind="attr: { value: 'eng' }, checked: searchType">
+	  					English
+	  				</label>
+	  			</div>
+	  			<div class="form-group">
+	  				<label>
+	  					<input type="radio" name="searchType" data-bind="attr: { value: 'ker' }, checked: searchType">
+	  					Cornish
+	  				</label>
+	  			</div>
 	  			<button type="button" class="btn btn-primary" data-bind="click: doSearch">Search<span data-bind="visible: loading">&nbsp;<i class="icon icon-spin icon-refresh"></i></span></button>
 			</div>
 
