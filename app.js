@@ -44,11 +44,12 @@ function PlacesViewModel() {
 	this.keyword = ko.observable();
 	this.showError = ko.observable(false);
 	this.loading = ko.observable(false);
+	this.searchType = ko.observable('eng');
 };
 
 PlacesViewModel.prototype.doSearch = function() {
-	console.log('Searching ...');
 	var self = this;
+
 	if(!this.keyword() || this.keyword().length < 3) {
 		this.showError(true);
 		return;
@@ -57,7 +58,8 @@ PlacesViewModel.prototype.doSearch = function() {
 	this.loading(true);
 	this.showError(false);
 
-	$.getJSON('http://cpn.apphb.com/places?keyword=' + this.keyword(), function(data) {
+	var url = this.searchUrl();
+	$.getJSON(url, function(data) {
 		self.places.removeAll();
 
 		for(var i = 0; i < data.length; i ++) {
@@ -66,4 +68,12 @@ PlacesViewModel.prototype.doSearch = function() {
 
 		self.loading(false);
 	});
+};
+
+PlacesViewModel.prototype.searchUrl = function() {
+	var url =  
+		'http://cpn.apphb.com/places?' +
+		(this.searchType() === 'eng' ? 'keyword=' : 'cornishKeyword=') +
+		this.keyword();
+	return url;
 };
