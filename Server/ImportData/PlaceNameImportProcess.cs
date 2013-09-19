@@ -9,7 +9,7 @@ namespace ImportData
         {
             this.Register(new LoadPlaces("data\\data.xlsx"));
             this.Register(new CuratePlaces());
-            this.Register(new InsertPlaces("dev"));
+            this.Register(new InsertPlaces("live"));
         }
     }
 }
