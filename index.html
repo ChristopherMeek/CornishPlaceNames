@@ -88,22 +88,16 @@
 
 			<table class="table">
 				<tr>
-					<th>Name</th>
+					<th>English Name</th>
 					<th>Parish</th>
-					<th>Grid Ref</th>
-					<th>Cornish Form</th>
-					<th>Progress</th>
-					<th>Notes</th>
+					<th>Cornish Name</th>					
 				</tr>
 				
 				<!-- ko foreach: places -->
 				<tr>
-					<td data-bind="text: Name"></td>
+					<td data-bind="text: EnglishName"></td>
 					<td data-bind="text: Parish"></td>
-					<td data-bind="text: GridRef"></td>
-					<td data-bind="text: CornishForm"></td>
-					<td data-bind="text: Progress"></td>
-					<td data-bind="text: Notes"></td>
+					<td data-bind="text: CornishName"></td>					
 				</tr>
 				<!-- /ko -->
 			</table>

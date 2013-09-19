@@ -72,7 +72,8 @@ PlacesViewModel.prototype.doSearch = function() {
 
 PlacesViewModel.prototype.searchUrl = function() {
 	var url =  
-		'http://cpn.apphb.com/places?' +
+		//'http://cpn.apphb.com/places?' +
+		'http://localhost:7844/places?' +
 		(this.searchType() === 'eng' ? 'keyword=' : 'cornishKeyword=') +
 		this.keyword();
 	return url;

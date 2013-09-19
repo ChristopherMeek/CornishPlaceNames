@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Domain;
 using Nancy;
-using Server.Domain;
 using Simple.Data;
 
 namespace Server
@@ -30,14 +30,14 @@ namespace Server
         private static IEnumerable<Place> FindByEnglishName(string name)
         {
             var db = Database.Open();
-            IEnumerable<Place> places = db.Places.FindAll(db.Places.Name.Like(name.WithWildcards())).OrderByName();
+            IEnumerable<Place> places = db.Places.FindAll(db.Places.EnglishName.Like(name.WithWildcards())).OrderByEnglishName();
             return places;
         }
 
         private static IEnumerable<Place> FindByCornishName(string name)
         {
             var db = Database.Open();
-            IEnumerable<Place> places = db.Places.FindAll(db.Places.CornishForm.Like(name.WithWildcards())).OrderByCornishForm();
+            IEnumerable<Place> places = db.Places.FindAll(db.Places.CornishName.Like(name.WithWildcards())).OrderByCornishName();
             return places;
         }
     }

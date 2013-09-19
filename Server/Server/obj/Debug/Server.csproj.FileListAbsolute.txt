@@ -11,3 +11,10 @@ C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.Ado.dll
 C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.dll
 C:\Projects\CornishPlaceNames\Server\Server\bin\Simple.Data.SqlServer.dll
 C:\Projects\CornishPlaceNames\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Projects\CornishPlaceNames\Server\Server\bin\Domain.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\Domain.pdb
+C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.Runner.dll
+C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.pdb
+C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.xml
+C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.Runner.pdb
