@@ -14,6 +14,12 @@ namespace Server
         public PlaceModule()
         {
             Get["/places"] = ListPlaces;
+            Get["/places/{id}"] = GetPlace;
+        }
+
+        private object GetPlace(dynamic parameters)
+        {
+            return Response.AsJson((Place)Database.Open().Places.FindById((int)parameters.id));
         }
 
         private object ListPlaces(dynamic parameters)
@@ -22,7 +28,7 @@ namespace Server
                 return Response.AsJson(FindByEnglishName((string)Request.Query.keyword));
 
             if (Request.Query.cornishKeyword.HasValue)
-                return Response.AsJson(FindByCornishName((string) Request.Query.cornishKeyword));
+                return Response.AsJson(FindByCornishName((string)Request.Query.cornishKeyword));
 
             return 500;
         }

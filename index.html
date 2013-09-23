@@ -90,7 +90,8 @@
 				<tr>
 					<th>English Name</th>
 					<th>Parish</th>
-					<th>Cornish Name</th>					
+					<th>Cornish Name</th>	
+					<th></th>				
 				</tr>
 				
 				<!-- ko foreach: places -->
@@ -98,6 +99,7 @@
 					<td data-bind="text: EnglishName"></td>
 					<td data-bind="text: Parish"></td>
 					<td data-bind="text: CornishName"></td>					
+					<td><a data-bind="attr: { href: 'place/' + Id }, click: $root.link">Details</a></td>
 				</tr>
 				<!-- /ko -->
 			</table>
