@@ -14,6 +14,12 @@ function Application() {
 			self.currentViewModel(self.getViewModel('places', PlacesViewModel));
 		});
 
+		this.get('#place/:id', function() {
+			console.log('Route: Place');
+			self.getViewModel('place', PlaceViewModel).load(this.params['id']);
+			self.currentViewModel(self.getViewModel('place', PlaceViewModel))
+		});
+
 		this.get('', function() {
 			this.app.runRoute("get", "#home");	
 		});
@@ -78,3 +84,30 @@ PlacesViewModel.prototype.searchUrl = function() {
 		this.keyword();
 	return url;
 };
+
+function PlaceViewModel() {
+	this.template = ko.observable('place');
+
+	this.EnglishName = ko.observable();
+	this.Type = ko.observable();
+	this.Parish = ko.observable();
+	this.Keverang = ko.observable();
+	this.GridReference = ko.observable();
+	this.CornishName = ko.observable();
+	this.Administration = ko.observable();
+	this.Notes = ko.observable();
+};
+
+PlaceViewModel.prototype.load = function(id) {
+	var self = this;
+	$.getJSON('http://cpn.apphb.com/places/' + id, function(data) {
+		self.EnglishName(data.EnglishName);
+		self.Type(data.Type);
+		self.Parish(data.Parish);
+		self.Keverang(data.Keverang);
+		self.GridReference(data.GridReference);
+		self.CornishName(data.CornishName);
+		self.Administration(data.Administration);
+		self.Notes(data.Notes);
+	});
+}
