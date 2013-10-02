@@ -1,49 +1,57 @@
+var rootUrl = "http://localhost:7844/"; //"http://cpn.apphb.com/";
+
 function Application() {
 	var self = this;
 	this.viewModelCache = {};
-	this.currentViewModel = ko.observable(this.getViewModel('home',HomeViewModel));
+	this.currentViewModel = ko.observable(this.getViewModel('home', HomeViewModel));
+	this.api = null;
 
-	Sammy(function() {
-		this.get('#home', function() {
-			console.log('Route: Home');
-			self.currentViewModel(self.getViewModel('home', HomeViewModel));
-		});
+	new HDK(rootUrl).fetch(function(response) {
+		self.api = response;
 
-		this.get('#places', function() {
-			console.log('Route: Places');
-			self.currentViewModel(self.getViewModel('places', PlacesViewModel));
-		});
+		Sammy(function() {
+			this.get('#home', function() {
+				console.log('Route: Home');
+				self.currentViewModel(self.getViewModel('home', HomeViewModel));
+			});
 
-		this.get('#place/:id', function() {
-			console.log('Route: Place');
-			self.getViewModel('place', PlaceViewModel).load(this.params['id']);
-			self.currentViewModel(self.getViewModel('place', PlaceViewModel))
-		});
+			this.get('#places', function() {
+				console.log('Route: Places');
+				self.currentViewModel(self.getViewModel('places', PlacesViewModel));
+			});
 
-		this.get('', function() {
-			this.app.runRoute("get", "#home");	
-		});
-	}).run();
+			this.get('#place/:id', function() {
+				console.log('Route: Place');
+				self.getViewModel('place', PlaceViewModel).load(this.params['id']);
+				self.currentViewModel(self.getViewModel('place', PlaceViewModel))
+			});
+
+			this.get('', function() {
+				this.app.runRoute("get", "#home");
+			});
+		}).run();
+	});
 };
 
-Application.prototype.getViewModel = function (name, constructor) {
-	if(!this.viewModelCache[name]) {
+Application.prototype.getViewModel = function(name, constructor) {
+	if (!this.viewModelCache[name]) {
 		this.viewModelCache[name] = new constructor();
+		this.viewModelCache[name].parent = this;
 	}
 
 	return this.viewModelCache[name];
 }
 
-Application.prototype.link = function(data,event) {
+Application.prototype.link = function(data, event) {
 	event.preventDefault();
-	location.hash = $(event.target).attr('href');	
+	location.hash = $(event.target).attr('href');
 };
 
 function HomeViewModel() {
 	this.template = ko.observable('home');
 };
 
-function PlacesViewModel() {	
+function PlacesViewModel() {
 	this.template = ko.observable('places');
 
 	this.places = ko.observableArray();
@@ -51,12 +59,20 @@ function PlacesViewModel() {
 	this.showError = ko.observable(false);
 	this.loading = ko.observable(false);
 	this.searchType = ko.observable('eng');
+
+	this.currentPage = ko.observable();
+	this.hasPrevious = ko.observable(false);
+	this.hasNext = ko.observable(false);
+	this.totalPages = ko.observable(0);
+
+	this.nextUrl = ko.observable();
+	this.previousUrl = ko.observable();
 };
 
 PlacesViewModel.prototype.doSearch = function() {
 	var self = this;
 
-	if(!this.keyword() || this.keyword().length < 3) {
+	if (!this.keyword() || this.keyword().length < 3) {
 		this.showError(true);
 		return;
 	}
@@ -64,25 +80,57 @@ PlacesViewModel.prototype.doSearch = function() {
 	this.loading(true);
 	this.showError(false);
 
-	var url = this.searchUrl();
-	$.getJSON(url, function(data) {
-		self.places.removeAll();
-
-		for(var i = 0; i < data.length; i ++) {
-			self.places.push(data[i]);
-		}
-
-		self.loading(false);
+	var linkName = this.searchType() == 'eng' ? 'places-english' : 'places-cornish';
+	this.parent.api.follow(linkName, {
+		keyword: this.keyword(),
+		page: 1,
+		pageSize: 10
+	}, function(data) {
+		self.processResults(data);
 	});
 };
 
-PlacesViewModel.prototype.searchUrl = function() {
-	var url =  
-		'http://cpn.apphb.com/places?' +
-		//'http://localhost:7844/places?' +
-		(this.searchType() === 'eng' ? 'keyword=' : 'cornishKeyword=') +
-		this.keyword();
-	return url;
+PlacesViewModel.prototype.next = function() {
+	var self = this;
+
+	this.loading(true);
+	this.showError(false);
+
+	this.parent.api.fetch(this.nextUrl(),function(data) { self.processResults(data); });
+};
+
+PlacesViewModel.prototype.previous = function() {
+	var self = this;
+
+	this.loading(true);
+	this.showError(false);
+
+	this.parent.api.fetch(this.previousUrl(),function(data) { self.processResults(data); });
+};
+
+PlacesViewModel.prototype.processResults = function(data) {
+	this.places.removeAll();
+
+	for (var i = 0; i < data._embedded.places.length; i++) {
+		this.places.push(data._embedded.places[i]);
+	}
+
+	this.hasNext(false);
+	if (data._links.next) {
+		this.hasNext(true);
+		this.nextUrl(data._links.next.href);
+	}
+
+	this.hasPrevious(false);
+	if (data._links.prev) {
+		this.hasPrevious(true);
+		this.previousUrl(data._links.prev.href);
+	}
+
+	this.totalPages(data.pages);
+	this.currentPage(data.page);
+
+	this.loading(false);
 };
 
 function PlaceViewModel() {
@@ -98,9 +146,10 @@ function PlaceViewModel() {
 	this.Notes = ko.observable();
 };
 
-PlaceViewModel.prototype.load = function(id) {
+PlaceViewModel.prototype.load = function(url) {
 	var self = this;
-	$.getJSON('http://cpn.apphb.com/places/' + id, function(data) {
+
+	this.parent.api.fetch(url, function(data) {
 		self.EnglishName(data.EnglishName);
 		self.Type(data.Type);
 		self.Parish(data.Parish);

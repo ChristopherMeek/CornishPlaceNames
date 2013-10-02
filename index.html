@@ -99,10 +99,24 @@
 					<td data-bind="text: EnglishName"></td>
 					<td data-bind="text: Parish"></td>
 					<td data-bind="text: CornishName"></td>					
-					<td><a data-bind="attr: { href: 'place/' + Id }, click: $root.link">Details</a></td>
+					<td><a data-bind="attr: { href: 'place/' + _links.self.href.escapeURL(true) }, click: $root.link">Details</a></td>
 				</tr>
 				<!-- /ko -->
 			</table>
+
+			<div class="row" data-bind="visible: totalPages() > 1">
+				<div class="col-md-2">
+					<a href="#" class="btn btn-primary" data-bind="click: previous, visible: hasPrevious"><i class="icon icon-chevron-left"></i>&nbsp;Prev</a>
+				</div>
+
+				<div class="col-md-8 text-center">
+					Page <span data-bind="text: currentPage"></span> of <span data-bind="text: totalPages"></span>
+				</div>
+
+				<div class="col-md-2 text-right">
+					<a href="#" data-bind="click: next, visible: hasNext" class="btn btn-primary">Next&nbsp;<i class="icon icon-chevron-right"></i></a>
+				</div>
+			</div>
 		</div>
 	</script>
 
@@ -131,7 +145,7 @@
 					<label>Notes:</label>
 					<textarea class="form-control" data-bind="value: Notes" disabled rows="5"></textarea>
 				</div>	
-				<a href="places"  data-bind="click: $root.link" class="btn btn-primary">&lt;&nbsp;Places</a>			
+				<a href="places"  data-bind="click: $root.link" class="btn btn-primary"><i class="icon icon-chevron-left"></i>&nbsp;Places</a>			
 			</form>
 		<div>
 	</script>
@@ -142,6 +156,8 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.3.5/knockout.mapping.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/sugar/1.3.9/sugar.min.js"></script>
+	<script src="hdk.js"></script>
 	<script src="app.js"></script>
 
 	<script>		
