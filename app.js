@@ -1,4 +1,4 @@
-var rootUrl = "http://localhost:7844/"; //"http://cpn.apphb.com/";
+var rootUrl = "http://cpn.apphb.com/";
 
 function Application() {
 	var self = this;
