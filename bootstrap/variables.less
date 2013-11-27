@@ -40,7 +40,7 @@
 // -------------------------
 
 @font-family-sans-serif:  "Open Sans", Calibri, Candara, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-serif:       "Uncial Antiqua", cursive;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
@@ -236,18 +236,18 @@
 // -------------------------
 
 // Basics of a navbar
-@navbar-height:                    50px;
+@navbar-height:                    149px;
 @navbar-margin-bottom:             @line-height-computed;
-@navbar-default-color:             #fff;
-@navbar-default-bg:                @gray-darker;
-@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-color:             @gray-darker;
+@navbar-default-bg:                #fff;
+@navbar-default-border:            #fff;
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
-@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-padding-vertical:          ((@navbar-height - 70) / 2);
 
 // Navbar links
-@navbar-default-link-color:                #fff;
-@navbar-default-link-hover-color:          #fff;
+@navbar-default-link-color:                #000;
+@navbar-default-link-hover-color:          #000;
 @navbar-default-link-hover-bg:             darken(@navbar-default-bg, 10%);
 @navbar-default-link-active-color:         @navbar-default-link-hover-color;
 @navbar-default-link-active-bg:            @navbar-default-link-hover-bg;
@@ -256,7 +256,7 @@
 
 // Navbar brand label
 @navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         #fff;
+@navbar-default-brand-hover-color:         @navbar-default-color;
 @navbar-default-brand-hover-bg:            none;
 
 // Navbar toggle
