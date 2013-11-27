@@ -3,9 +3,10 @@
 <head>	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<title>Cornish Place Names</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Uncial+Antiqua' rel='stylesheet' type='text/css'>
 	<link href="styles.css" rel="stylesheet">
-
-
 </head>
 <body>	
 
@@ -20,7 +21,10 @@
 	    </button>
 
 	    <!-- Be sure to leave the brand out there if you want it shown -->
-	    <a class="navbar-brand" href="#">Cornish Place Names</a>
+	    <a class="navbar-brand" href="#">
+	    	<img src="logo.jpg" alt="Maga">
+	    	Cornish Place Names
+	    </a>
 
 	    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
 	    <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -44,7 +48,8 @@
 			</address>
 		</div>
 		<div class="container text-center">			
-			Site developed by <a href="http://www.sensemaking.uk.com">sense|making</a>
+			Site developed by <a href="http://www.sensemaking.uk.com">sense|making</a><br>
+			&copy; Copyright 2013 - Cornish Language Partnership
 		</div>
 	</footer>
 
@@ -105,15 +110,15 @@
 			</table>
 
 			<div class="row" data-bind="visible: totalPages() > 1">
-				<div class="col-md-2">
+				<div class="col-md-2 col-sm-4 col-xs-4">
 					<a href="#" class="btn btn-primary" data-bind="click: previous, visible: hasPrevious"><i class="icon icon-chevron-left"></i>&nbsp;Prev</a>
 				</div>
 
-				<div class="col-md-8 text-center">
+				<div class="col-md-8 col-sm-4 col-xs-4 text-center">
 					Page <span data-bind="text: currentPage"></span> of <span data-bind="text: totalPages"></span>
 				</div>
 
-				<div class="col-md-2 text-right">
+				<div class="col-md-2 col-sm-4 col-xs-4 text-right">
 					<a href="#" data-bind="click: next, visible: hasNext" class="btn btn-primary">Next&nbsp;<i class="icon icon-chevron-right"></i></a>
 				</div>
 			</div>
