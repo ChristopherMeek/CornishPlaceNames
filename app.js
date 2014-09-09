@@ -144,6 +144,10 @@ function PlaceViewModel() {
 	this.CornishName = ko.observable();
 	this.Administration = ko.observable();
 	this.Notes = ko.observable();
+	this.Longitude = ko.observable();
+	this.Latitude = ko.observable();
+
+	this.map = null;
 };
 
 PlaceViewModel.prototype.load = function(url) {
@@ -158,5 +162,39 @@ PlaceViewModel.prototype.load = function(url) {
 		self.CornishName(data.CornishName);
 		self.Administration(data.Administration);
 		self.Notes(data.Notes);
+		self.Longitude(data.longitude);
+		self.Latitude(data.latitude);
+
+		self.initMap();
 	});
+};
+
+PlaceViewModel.prototype.initMap = function() {
+	if(this.Longitude() && this.Latitude()) {
+		var coords = new google.maps.LatLng(this.Latitude(),this.Longitude());
+		var mapOptions = {
+			zoom: 12,
+			center: coords
+		};
+
+		this.map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+		var marker = new google.maps.Marker({
+      		position: coords,
+      		map: this.map,
+      		title: this.CornishName()
+  		});
+	}
+};
+
+/*
+var map;
+function initialize() {
+  var mapOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(-34.397, 150.644)
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
 }
+*/
