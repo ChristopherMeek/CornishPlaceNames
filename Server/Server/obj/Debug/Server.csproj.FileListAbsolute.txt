@@ -18,3 +18,4 @@ C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.Runner.dll
 C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.pdb
 C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.xml
 C:\Projects\CornishPlaceNames\Server\Server\bin\FluentMigrator.Runner.pdb
+C:\Projects\CornishPlaceNames\Server\Server\bin\DotNetCoords.dll

@@ -125,5 +125,13 @@ namespace Server.HAL
 
             return this;
         }
+
+        public HalBuilder ConditionallyAddProperty(string name, bool condition, Func<object> value)
+        {
+            if (condition)
+                this.AddProperty(name, value());
+
+            return this;
+        }
     }
 }

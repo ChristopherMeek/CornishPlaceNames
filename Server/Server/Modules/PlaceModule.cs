@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Domain;
+using DotNetCoords;
 using Nancy;
 using Nancy.ModelBinding;
 using Server.HAL;
@@ -18,8 +20,22 @@ namespace Server.Modules
         private object GetPlace(dynamic parameters)
         {
             var place = (Place)Database.Open().Places.FindById((int)parameters.id);
+
+            OSRef gridRef = null;
+            if(!string.IsNullOrEmpty(place.GridReference))
+                try
+                {
+                    gridRef = new OSRef(Regex.Replace(place.GridReference, @"\s+", ""));
+                }
+                catch
+                {
+                    //dont care
+                }
+
             var representation = new HalBuilder(Request.Url.ToString())
                 .AddPublicPropertiesOf(place)
+                .ConditionallyAddProperty("longitude", gridRef != null, ()=>gridRef.ToLatLng().Longitude)
+                .ConditionallyAddProperty("latitude", gridRef != null, ()=>gridRef.ToLatLng().Latitude)
                 .Build();
 
             return Response.AsJson(representation);
