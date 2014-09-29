@@ -146,6 +146,8 @@ function PlaceViewModel() {
 	this.Notes = ko.observable();
 	this.Longitude = ko.observable();
 	this.Latitude = ko.observable();
+	this.HistoricForms = ko.observable();
+	this.Etymology = ko.observable();
 
 	this.map = null;
 };
@@ -164,6 +166,8 @@ PlaceViewModel.prototype.load = function(url) {
 		self.Notes(data.Notes);
 		self.Longitude(data.longitude);
 		self.Latitude(data.latitude);
+		self.HistoricForms(data.HistoricForms);
+		self.Etymology(data.Etymology);
 
 		self.initMap();
 	});
