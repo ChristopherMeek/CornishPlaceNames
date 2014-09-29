@@ -24,7 +24,7 @@ namespace ImportData
                 Administration = (string) row.ValueOfColumnContaining("Administration"),
                 Notes = (string) row.ValueOfColumnContaining("Notes"),
                 Etymology = (string) row.ValueOfColumnContaining("Etymology"),
-                HitoricForms = (string) row.ValueOfColumnContaining("Historic")
+                HistoricForms = (string) row.ValueOfColumnContaining("Historic")
             };
 
             return place;
