@@ -22,7 +22,9 @@ namespace ImportData
                 GridReference = (string) row.ValueOfColumnContaining("Grid"),
                 CornishName = (string) row.ValueOfColumnContaining("Cornish"),
                 Administration = (string) row.ValueOfColumnContaining("Administration"),
-                Notes = (string) row.ValueOfColumnContaining("Notes")
+                Notes = (string) row.ValueOfColumnContaining("Notes"),
+                Etymology = (string) row.ValueOfColumnContaining("Etymology"),
+                HitoricForms = (string) row.ValueOfColumnContaining("Historic")
             };
 
             return place;

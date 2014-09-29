@@ -11,5 +11,7 @@
         public string CornishName { get; set; }
         public string Administration { get; set; }
         public string Notes { get; set; }
+        public string Etymology { get; set; }
+        public string HitoricForms { get; set; }
     }
 }
