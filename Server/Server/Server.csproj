@@ -89,6 +89,7 @@
     <Compile Include="Migrations\1-RemoveImportedPlacesTable.cs" />
     <Compile Include="Migrations\2-AddPlacesTable.cs" />
     <Compile Include="Migrations\3-AddEtymologyAndHistoricForms.cs" />
+    <Compile Include="Migrations\4-CorrectHistoricFormsSpelling.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\PlaceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
