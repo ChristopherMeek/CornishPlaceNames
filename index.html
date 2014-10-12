@@ -94,6 +94,7 @@
 			<table class="table">
 				<tr>
 					<th>English Name</th>
+					<th>Type</th>
 					<th>Parish</th>
 					<th>Cornish Name</th>	
 					<th></th>				
@@ -102,6 +103,7 @@
 				<!-- ko foreach: places -->
 				<tr>
 					<td data-bind="text: EnglishName"></td>
+					<td data-bind="text: Type"></td>
 					<td data-bind="text: Parish"></td>
 					<td data-bind="text: CornishName"></td>					
 					<td><a data-bind="attr: { href: 'place/' + _links.self.href.escapeURL(true) }, click: $root.link">Details</a></td>
@@ -131,7 +133,11 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<form>
+					<form>						
+						<div class="form-group">
+							<label>Type:</label>
+							<input class="form-control" data-bind="value: Type" disabled>
+						</div>	
 						<div class="form-group">
 							<label>Parish:</label>
 							<input class="form-control" data-bind="value: Parish" disabled>
@@ -143,7 +149,8 @@
 						<div class="form-group">
 							<label>Grid Reference:</label>
 							<input class="form-control" data-bind="value: GridReference" disabled>
-						</div>				
+						</div>
+									
 						<div class="form-group">
 							<label>Etymology:</label>
 							<textarea class="form-control" data-bind="value: Etymology" disabled rows="5"></textarea>

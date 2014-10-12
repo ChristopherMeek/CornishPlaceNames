@@ -66,6 +66,7 @@ namespace Server.Modules
                     place => place.Id,
                     place => place.EnglishName,
                     place => place.CornishName,
+                    place => place.Type,
                     place => place.Parish);
 
             if (parameters.Page < totalPages)
