@@ -4,3 +4,9 @@ C:\Projects\CornishPlaceNames\Server\Domain\obj\Debug\Domain.dll
 C:\Projects\CornishPlaceNames\Server\Domain\obj\Debug\Domain.pdb
 C:\Projects\CornishPlaceNames\Server\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Projects\CornishPlaceNames\Server\Domain\bin\Debug\DotNetCoords.dll
+E:\projects\CornishPlaceNames\Server\Domain\bin\Debug\Domain.dll
+E:\projects\CornishPlaceNames\Server\Domain\bin\Debug\Domain.pdb
+E:\projects\CornishPlaceNames\Server\Domain\bin\Debug\DotNetCoords.dll
+E:\projects\CornishPlaceNames\Server\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+E:\projects\CornishPlaceNames\Server\Domain\obj\Debug\Domain.dll
+E:\projects\CornishPlaceNames\Server\Domain\obj\Debug\Domain.pdb

@@ -172,7 +172,7 @@ namespace Server.Modules
             {
                 if (_params.IsCornishSearch)
                 {
-                    return Settings.ToAbsolute(string.Format("/places?cornishKeyword={0}&page={1}&pageSize={2}",_params.Keyword,_params.Page,_params.PageSize));
+                    return Settings.ToAbsolute(string.Format("/places?cornishKeyword={0}&page={1}&pageSize={2}",_params.CornishKeyword,_params.Page,_params.PageSize));
                 }
 
                 return Settings.ToAbsolute(string.Format("/places?keyword={0}&page={1}&pageSize={2}", _params.Keyword, _params.Page, _params.PageSize));
