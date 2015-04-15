@@ -1,0 +1,63 @@
+﻿@Master['master.html']
+
+@Section['Content']
+<div class="container">
+    <div class="row">
+        <br />
+        <form action="/admin/edit/@Model.Place.Id" method="POST">
+            <input type="hidden" id="Id" value="@Model.Place.Id"/>
+
+            <div class="form-group">
+                <label for="EnglishName">English Name:</label>
+                <input class="form-control" id="EnglishName" name="EnglishName" value="@Model.Place.EnglishName">
+            </div>
+
+            <div class="form-group">
+                <label for="Type">Type:</label>
+                <input class="form-control" id="Type" name="Type" value="@Model.Place.Type">
+            </div>
+
+            <div class="form-group">
+                <label for="Parish">Parish:</label>
+                <input class="form-control" id="Parish" name="Parish" value="@Model.Place.Parish">
+            </div>
+
+            <div class="form-group">
+                <label for="Keverang">Keverang:</label>
+                <input class="form-control" id="Keverang" name="Keverang" value="@Model.Place.Keverang">
+            </div>
+
+            <div class="form-group">
+                <label for="GridReference">Grid Reference:</label>
+                <input class="form-control" id="GridReference" name="GridReference" value="@Model.Place.GridReference">
+            </div>
+
+            <div class="form-group">
+                <label for="CornishName">Cornish Name:</label>
+                <input class="form-control" id="CornishName" name="CornishName" value="@Model.Place.CornishName">
+            </div>
+
+            <div class="form-group">
+                <label for="Administration">Administration:</label>
+                <input class="form-control" id="Administration" name="Administration" value="@Model.Place.Administration">
+            </div>
+
+            <div class="form-group">
+                <label for="Notes">Notes:</label>
+                <input class="form-control" id="Notes" name="Notes" value="@Model.Place.Notes">
+            </div>
+
+            <div class="form-group">
+                <label for="">Etymology:</label>
+                <input class="form-control" id="Etymology" name="Etymology" value="@Model.Place.Etymology">
+            </div>
+
+            <div class="form-group">
+                <label for="HistoricForms">HistoricForms:</label>
+                <input class="form-control" id="HistoricForms" name="HistoricForms" value="@Model.Place.HistoricForms">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+@EndSection

@@ -9,6 +9,7 @@ using FluentMigrator.Runner;
 using FluentMigrator.Runner.Announcers;
 using FluentMigrator.Runner.Initialization;
 using Nancy;
+using Nancy.Authentication.Basic;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 
@@ -36,6 +37,8 @@ namespace Server
                 options);
             var runner = new MigrationRunner(assembly, migrationContext, processor);
             runner.MigrateUp(true);
+
+            pipelines.EnableBasicAuthentication(new BasicAuthenticationConfiguration(new UserValidator(), "CPNRealm"));
         }
     }
 
