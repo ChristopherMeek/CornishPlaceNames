@@ -11,6 +11,7 @@ using FluentMigrator.Runner.Initialization;
 using Nancy;
 using Nancy.Authentication.Basic;
 using Nancy.Bootstrapper;
+using Nancy.Json;
 using Nancy.TinyIoc;
 
 namespace Server
@@ -39,6 +40,8 @@ namespace Server
             runner.MigrateUp(true);
 
             pipelines.EnableBasicAuthentication(new BasicAuthenticationConfiguration(new UserValidator(), "CPNRealm"));
+
+            JsonSettings.RetainCasing = true;
         }
     }
 
