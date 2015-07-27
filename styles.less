@@ -1,3 +1,5 @@
+// out: styles.css
+
 @import "bootstrap/bootstrap.less";
 
 body {
@@ -5,13 +7,13 @@ body {
 	background-color: @brand-primary;
 }
 
-.navbar-brand  
+.navbar-brand
 {
 
 	line-height: 70px;
 	font-size: 2.5em;
 
-	img 
+	img
 	{
 		height: 70px;
 	}
@@ -24,9 +26,9 @@ body {
 	min-height: 437px;
 }
 
-footer {	
+footer {
 	padding-top: 25px;
-	padding-bottom: 25px;	
+	padding-bottom: 25px;
 
 	a, a:visited, a:hover, a:active {
 		color: #fff;
@@ -39,4 +41,14 @@ table {
 
 .alert {
 	margin-top: 10px;
+}
+
+.navbar-toggle, .navbar-toggle:hover {
+	background-color: @brand-primary;
+}
+
+@media(max-width: @screen-xs-max){
+	#maga-logo {
+		display: none;
+	}
 }
