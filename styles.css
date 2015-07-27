@@ -6827,7 +6827,7 @@ table {
 .navbar-toggle:hover {
   background-color: #e98200;
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   #maga-logo {
     display: none;
   }
