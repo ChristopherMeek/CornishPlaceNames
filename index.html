@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>	
+<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>Cornish Place Names</title>
@@ -8,13 +8,13 @@
 	<link href='http://fonts.googleapis.com/css?family=Uncial+Antiqua' rel='stylesheet' type='text/css'>
 	<link href="styles.css" rel="stylesheet">
 </head>
-<body>	
+<body>
 
 	<div class="navbar navbar-default navbar-fixed-top">
 	  <div class="container">
 
 	    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-options">
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
@@ -22,15 +22,15 @@
 
 	    <!-- Be sure to leave the brand out there if you want it shown -->
 	    <a class="navbar-brand" href="#">
-	    	<img src="logo.jpg" alt="Maga">
+	    	<img src="logo.jpg" alt="Maga" id="maga-logo">
 	    	Cornish Place Names
 	    </a>
 
 	    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
-	    <div class="collapse navbar-collapse navbar-ex1-collapse">
+	    <div class="collapse navbar-collapse navbar-ex1-collapse" id="nav-options">
     		<ul class="nav navbar-nav">
       			<li data-bind="css: { active: currentViewModel().template() == 'home' }"><a href="home" data-bind="click: link">Home</a></li>
-      			<li data-bind="css: { active: currentViewModel().template() == 'places' }"><a href="places"  data-bind="click: link">Places</a></li>      			
+      			<li data-bind="css: { active: currentViewModel().template() == 'places' }"><a href="places"  data-bind="click: link">Places</a></li>
       		</ul>
       	</div>
       </div>
@@ -47,7 +47,7 @@
 				<a href="mailto:cornishlanguage@cornwall.gov.uk">cornishlanguage@cornwall.gov.uk</a>
 			</address>
 		</div>
-		<div class="container text-center">			
+		<div class="container text-center">
 			Site developed by <a href="http://www.sensemaking.uk.com">sense|making</a><br>
 			&copy; Copyright 2013 - Cornish Language Partnership
 		</div>
@@ -60,7 +60,7 @@
 
 		<p>The Cornish Language Partnership (CLP) represents all stakeholders with an interest in the Cornish Language. It is funded by the UK Government and Cornwall Council.</p>
 
-		<p>The Place Name and Street Sign Panel, of the CLP, provide recommended Cornish forms of place and street names. This helps maintain consistency whilst preventing confusion and duplication. Members of the Panel are Cornish speakers and comprise most of the acknowledged experts on Cornish place names.</p> 
+		<p>The Place Name and Street Sign Panel, of the CLP, provide recommended Cornish forms of place and street names. This helps maintain consistency whilst preventing confusion and duplication. Members of the Panel are Cornish speakers and comprise most of the acknowledged experts on Cornish place names.</p>
 
 		<p>The gazetteer included in these webpages represents the extent of the Panel&#8217;s work to date.</p>
 		<div>
@@ -69,7 +69,7 @@
 	<script type="text/html" id="places">
 		<div class="container">
 			<div class="form-inline" role="form">
-	  			<div class="form-group">	  				
+	  			<div class="form-group">
 	    			<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword">
 	  			</div>
 	  			<div class="form-group">
@@ -96,16 +96,16 @@
 					<th>English Name</th>
 					<th>Type</th>
 					<th>Parish</th>
-					<th>Cornish Name</th>	
-					<th></th>				
+					<th>Cornish Name</th>
+					<th></th>
 				</tr>
-				
+
 				<!-- ko foreach: places -->
 				<tr>
 					<td data-bind="text: EnglishName"></td>
 					<td data-bind="text: Type"></td>
 					<td data-bind="text: Parish"></td>
-					<td data-bind="text: CornishName"></td>					
+					<td data-bind="text: CornishName"></td>
 					<td><a data-bind="attr: { href: 'place/' + _links.self.href.escapeURL(true) }, click: $root.link">Details</a></td>
 				</tr>
 				<!-- /ko -->
@@ -133,11 +133,11 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<form>						
+					<form>
 						<div class="form-group">
 							<label>Type:</label>
 							<input class="form-control" data-bind="value: Type" disabled>
-						</div>	
+						</div>
 						<div class="form-group">
 							<label>Parish:</label>
 							<input class="form-control" data-bind="value: Parish" disabled>
@@ -150,7 +150,7 @@
 							<label>Grid Reference:</label>
 							<input class="form-control" data-bind="value: GridReference" disabled>
 						</div>
-									
+
 						<div class="form-group">
 							<label>Etymology:</label>
 							<textarea class="form-control" data-bind="value: Etymology" disabled rows="5"></textarea>
@@ -158,7 +158,7 @@
 						<div class="form-group">
 							<label>Historic Forms:</label>
 							<textarea class="form-control" data-bind="value: HistoricForms" disabled rows="5"></textarea>
-						</div>	
+						</div>
 						<a href="places"  data-bind="click: $root.link" class="btn btn-primary"><i class="icon icon-chevron-left"></i>&nbsp;Places</a>
 					</form>
 				</div>
@@ -180,7 +180,7 @@
 	<script src="hdk.js"></script>
 	<script src="app.js"></script>
 
-	<script>		
+	<script>
 		var app = new Application();
 		ko.applyBindings(app);
 	</script>
