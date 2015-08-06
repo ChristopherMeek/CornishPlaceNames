@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,83 +9,95 @@
 	<link href='http://fonts.googleapis.com/css?family=Uncial+Antiqua' rel='stylesheet' type='text/css'>
 	<link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
 
 	<div class="navbar navbar-default navbar-fixed-top">
-	  <div class="container">
+		<div class="container">
 
-	    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-options">
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
+			<!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-options">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
-	    <!-- Be sure to leave the brand out there if you want it shown -->
-	    <a class="navbar-brand" href="#">
-	    	<img src="logo.jpg" alt="Maga" id="maga-logo">
-	    	Cornish Place Names
-	    </a>
+			<!-- Be sure to leave the brand out there if you want it shown -->
+			<a class="navbar-brand" href="#">
+				<img src="logo.jpg" alt="Maga" id="maga-logo"> Cornish Place Names
+			</a>
 
-	    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
-	    <div class="collapse navbar-collapse navbar-ex1-collapse" id="nav-options">
-    		<ul class="nav navbar-nav">
-      			<li data-bind="css: { active: currentViewModel().template() == 'home' }"><a href="home" data-bind="click: link">Home</a></li>
-      			<li data-bind="css: { active: currentViewModel().template() == 'places' }"><a href="places"  data-bind="click: link">Places</a></li>
-      		</ul>
-      	</div>
-      </div>
-	</div><!-- /.navbar -->
+			<!-- Place everything within .navbar-collapse to hide it until above 768px -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse" id="nav-options">
+				<ul class="nav navbar-nav">
+					<li data-bind="css: { active: currentViewModel().template() == 'home' }"><a href="home" data-bind="click: link">Home</a></li>
+					<li data-bind="css: { active: currentViewModel().template() == 'places' }"><a href="places" data-bind="click: link">Places</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /.navbar -->
 
 	<div data-bind="template: { name: currentViewModel().template, data: currentViewModel }" id="main"></div>
 
 	<footer>
 		<div class="container">
-			<h5>Contact</h5>
-			<address>
-  				<strong>Maga</strong><br>
-				<abbr title="Phone">T:</abbr> +44 (0)1872 323497<br>
-				<a href="mailto:cornishlanguage@cornwall.gov.uk">cornishlanguage@cornwall.gov.uk</a>
-			</address>
+			<div class="row">
+				<div class="col-md-6">
+					<h5>Contact</h5>
+					<address>
+						<strong>Maga</strong>
+						<br>
+						<abbr title="Phone">T:</abbr> +44 (0)1872 323497
+						<br>
+						<a href="mailto:cornishlanguage@cornwall.gov.uk">cornishlanguage@cornwall.gov.uk</a>
+					</address>
+				</div>
+				<div class="col-md-6" style="text-align: right">
+					<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+				</div>
+			</div>
+
 		</div>
 		<div class="container text-center">
-			Site developed by <a href="http://www.sensemaking.uk.com">sense|making</a><br>
-			&copy; Copyright 2013 - Cornish Language Partnership
+			Site developed by <a href="http://www.sensemaking.uk.com">sense|making</a>
+			<br> &copy; Copyright 2013 - Cornish Language Partnership
 		</div>
 	</footer>
 
 	<script type="text/html" id="home">
 		<div class="container">
-		<h1>Welcome</h1>
-		<p>Cornish place names are important since it is the first context where most Cornish people first encounter their own language. They have a special place for Cornish people, enhancing their sense of place and distinctive culture.</p>
+			<h1>Welcome</h1>
+			<p>Cornish place names are important since it is the first context where most Cornish people first encounter their own language. They have a special place for Cornish people, enhancing their sense of place and distinctive culture.</p>
 
-		<p>The Cornish Language Partnership (CLP) represents all stakeholders with an interest in the Cornish Language. It is funded by the UK Government and Cornwall Council.</p>
+			<p>The Cornish Language Partnership (CLP) represents all stakeholders with an interest in the Cornish Language. It is funded by the UK Government and Cornwall Council.</p>
 
-		<p>The Place Name and Street Sign Panel, of the CLP, provide recommended Cornish forms of place and street names. This helps maintain consistency whilst preventing confusion and duplication. Members of the Panel are Cornish speakers and comprise most of the acknowledged experts on Cornish place names.</p>
+			<p>The Place Name and Street Sign Panel, of the CLP, provide recommended Cornish forms of place and street names. This helps maintain consistency whilst preventing confusion and duplication. Members of the Panel are Cornish speakers and comprise most
+				of the acknowledged experts on Cornish place names.</p>
 
-		<p>The gazetteer included in these webpages represents the extent of the Panel&#8217;s work to date.</p>
-		<div>
+			<p>The gazetteer included in these webpages represents the extent of the Panel&#8217;s work to date.</p>
+			<div>
 	</script>
 
 	<script type="text/html" id="places">
 		<div class="container">
 			<div class="form-inline" role="form">
-	  			<div class="form-group">
-	    			<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword">
-	  			</div>
-	  			<div class="form-group">
-	  				<label>
-	  					<input type="radio" name="searchType" data-bind="attr: { value: 'eng' }, checked: searchType">
-	  					English
-	  				</label>
-	  			</div>
-	  			<div class="form-group">
-	  				<label>
-	  					<input type="radio" name="searchType" data-bind="attr: { value: 'ker' }, checked: searchType">
-	  					Cornish
-	  				</label>
-	  			</div>
-	  			<button type="button" class="btn btn-primary" data-bind="click: doSearch">Search<span data-bind="visible: loading">&nbsp;<i class="icon icon-spin icon-refresh"></i></span></button>
+				<div class="form-group">
+					<input type="text" class="form-control" id="keyword" placeholder="keyword" data-bind="value: keyword">
+				</div>
+				<div class="form-group">
+					<label>
+						<input type="radio" name="searchType" data-bind="attr: { value: 'eng' }, checked: searchType"> English
+					</label>
+				</div>
+				<div class="form-group">
+					<label>
+						<input type="radio" name="searchType" data-bind="attr: { value: 'ker' }, checked: searchType"> Cornish
+					</label>
+				</div>
+				<button type="button" class="btn btn-primary" data-bind="click: doSearch">Search
+					<span data-bind="visible: loading">&nbsp;<i class="icon icon-spin icon-refresh"></i></span>
+				</button>
 			</div>
 
 			<div class="alert alert-danger" data-bind="visible: showError">
@@ -117,7 +130,9 @@
 				</div>
 
 				<div class="col-md-8 col-sm-4 col-xs-4 text-center">
-					Page <span data-bind="text: currentPage"></span> of <span data-bind="text: totalPages"></span>
+					Page
+					<span data-bind="text: currentPage"></span> of
+					<span data-bind="text: totalPages"></span>
 				</div>
 
 				<div class="col-md-2 col-sm-4 col-xs-4 text-right">
@@ -129,7 +144,10 @@
 
 	<script type="text/html" id="place">
 		<div class="container">
-			<h1><span data-bind="text: CornishName"></span> ~ <span data-bind="text: EnglishName"></span></h1>
+			<h1>
+				<span data-bind="text: CornishName"></span> ~
+				<span data-bind="text: EnglishName"></span>
+			</h1>
 
 			<div class="row">
 				<div class="col-md-6">
@@ -159,14 +177,14 @@
 							<label>Historic Forms:</label>
 							<textarea class="form-control" data-bind="value: HistoricForms" disabled rows="5"></textarea>
 						</div>
-						<a href="places"  data-bind="click: $root.link" class="btn btn-primary"><i class="icon icon-chevron-left"></i>&nbsp;Places</a>
+						<a href="places" data-bind="click: $root.link" class="btn btn-primary"><i class="icon icon-chevron-left"></i>&nbsp;Places</a>
 					</form>
 				</div>
 				<div class="col-md-6">
 					<div id="google-map" style="height: 500px;"></div>
 				</div>
 			</div>
-		<div>
+			<div>
 	</script>
 
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -185,4 +203,5 @@
 		ko.applyBindings(app);
 	</script>
 </body>
+
 </html>

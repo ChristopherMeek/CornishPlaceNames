@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Domain;
 using Nancy;
 using Nancy.ModelBinding;
@@ -17,6 +18,16 @@ namespace Server.Modules
             Post["/admin/search"] = Admin;
             Get["/admin/edit/{id}"] = Edit;
             Post["/admin/edit/{id}"] = Save;
+
+            Get["/admin/resources"] = Resources;
+            Post["/admin/resources"] = SaveResources;
+        }
+
+        private object SaveResources(object arg)
+        {
+            var resources = this.Bind<IList<Resource>>();
+
+            return Response.AsRedirect("/admin/resources");
         }
 
         private object Admin(dynamic parameters)
@@ -46,6 +57,13 @@ namespace Server.Modules
             var db = Database.Open();
             SimpleQuery query = db.Places.FindAll(db.Places.EnglishName.Like(searchText.WithWildcards())).OrderByEnglishName();
             return query.ToList<Place>();
+        }
+
+        private object Resources(dynamic parameters)
+        {
+            var db = Database.Open();
+            IList<Resource> resources = db.Resources.All().ToList<Resource>();
+            return View[new ResourcesModel(resources)];
         }
     }
 }

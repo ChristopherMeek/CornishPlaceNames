@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +92,7 @@
   <ItemGroup>
     <Content Include="Views\edit.html" />
     <Content Include="Views\master.html" />
+    <Content Include="Views\resources.html" />
     <Content Include="Views\search.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -103,7 +105,9 @@
     <Compile Include="Migrations\2-AddPlacesTable.cs" />
     <Compile Include="Migrations\3-AddEtymologyAndHistoricForms.cs" />
     <Compile Include="Migrations\4-CorrectHistoricFormsSpelling.cs" />
+    <Compile Include="Migrations\5 - AddResourcesTable.cs" />
     <Compile Include="Models\EditModel.cs" />
+    <Compile Include="Models\ResourcesModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />

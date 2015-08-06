@@ -1,0 +1,50 @@
+﻿@Master['master.html']
+
+@Section['Content']
+<div class="container">
+    <div class="row">
+        <br />
+
+        <form action="/admin/resources" method="POST">
+            <table class="table table-striped table-hover" id="resources">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Url</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Each.Resources
+                    <tr>
+                        <td>
+                            <input type="hidden" name="Id[@Current.Index]" value="@Current.Resource.Id" />
+                            <input required name="Name[@Current.Index]" value="@Current.Resource.Name" style="width: 100%" />
+                        </td>
+                        <td>
+                            <textarea required name="Description[@Current.Index]" rows="5" style="width: 100%">@Current.Resource.Description</textarea>
+                        </td>
+                        <td>
+                            <input required name="URL[@Current.Index]" value="@Current.Resource.URL" style="width: 100%" />
+                        </td>
+                    </tr>
+                    @EndEach
+                </tbody>
+            </table>
+            <button class="btn btn-default" id="add-resource">Add Resource</button>
+            <button class="btn btn-primary" type="submit">Save</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    var nextIndex = @Model.NextIndex;;
+
+    function addRow() {
+        $("#resources tbody").append("<tr><td><input type=\"hidden\" name=\"Id["+nextIndex+"]\" value=\"-1\"/><input required name=\"Name["+nextIndex+"]\" style=\"width: 100%\"/></td><td><textarea required name=\"Description["+nextIndex+"]\" rows=\"5\" style=\"width: 100%\"></textarea></td><td><input required name=\"URL["+nextIndex+"]\" style=\"width: 100%\"/></td></tr>");
+        nextIndex++;
+    }
+
+    $("#add-resource").click(addRow);
+</script>
+@EndSection
