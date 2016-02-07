@@ -42,6 +42,8 @@ namespace Server
             pipelines.EnableBasicAuthentication(new BasicAuthenticationConfiguration(new UserValidator(), "CPNRealm"));
 
             JsonSettings.RetainCasing = true;
+
+            StaticConfiguration.DisableErrorTraces = false;
         }
     }
 

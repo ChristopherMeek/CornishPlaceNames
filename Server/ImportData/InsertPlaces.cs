@@ -24,6 +24,7 @@ namespace ImportData
         public override IEnumerable<Row> Execute(IEnumerable<Row> rows)
         {
             var db = Database.OpenConnection(_connectionString);
+            db.Places.DeleteAll();
             foreach (var row in rows)
             {
                 var place = row.ToObject<Place>();
